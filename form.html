@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070b14">
+  <title>FIT EXP | Personal Training System</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <section class="onboarding" id="onboarding" aria-label="Create your FIT EXP profile">
+    <div class="onboarding-orbit orbit-one"></div>
+    <div class="onboarding-orbit orbit-two"></div>
+    <div class="onboarding-card">
+      <div class="onboarding-brand"><span class="brand-mark">F</span><span>FIT <b>EXP</b><small>PERSONAL TRAINING SYSTEM</small></span></div>
+      <div class="onboarding-copy">
+        <p class="eyebrow"><span class="status-dot"></span> SYSTEM INITIALIZATION</p>
+        <h1 id="onboarding-title">Build your training profile.</h1>
+        <p id="onboarding-description">Your plan, progress and activity records are stored privately on this device.</p>
+      </div>
+
+      <form id="profile-form" class="onboarding-form">
+        <div class="form-grid">
+          <label class="field full"><span>What should we call you?</span><input id="profile-name-input" type="text" maxlength="28" autocomplete="name" placeholder="Your name" required></label>
+          <label class="field"><span>Gender</span><select id="profile-gender-input" required><option value="" selected disabled>Select</option><option>Woman</option><option>Man</option><option>Non-binary</option><option>Prefer not to say</option></select></label>
+          <label class="field"><span>Age</span><input id="profile-age-input" type="number" min="13" max="100" inputmode="numeric" placeholder="18" required></label>
+        </div>
+        <button class="glow-button wide-button" type="submit">Continue <span>&rarr;</span></button>
+      </form>
+
+      <form id="experience-form" class="onboarding-form" hidden>
+        <p class="field-label">Choose the plan that honestly fits your current routine.</p>
+        <div class="experience-options">
+          <label class="experience-card">
+            <input type="radio" name="experience" value="beginner" required>
+            <span class="experience-icon">01</span><span><strong>Beginner</strong><small>No daily workout routine yet. Start with short, achievable missions.</small></span><i></i>
+          </label>
+          <label class="experience-card">
+            <input type="radio" name="experience" value="medium">
+            <span class="experience-icon">02</span><span><strong>Medium</strong><small>You work out sometimes. Build consistency with balanced sessions.</small></span><i></i>
+          </label>
+          <label class="experience-card">
+            <input type="radio" name="experience" value="advanced">
+            <span class="experience-icon">03</span><span><strong>Advanced</strong><small>You train regularly. Take on higher-volume daily challenges.</small></span><i></i>
+          </label>
+        </div>
+        <div class="form-actions"><button class="outline-button" id="back-to-profile" type="button">Back</button><button class="glow-button" type="submit">Activate FIT EXP <span>&rarr;</span></button></div>
+      </form>
+      <p class="onboarding-note">FIT EXP is a habit tracker, not medical advice. Adjust any movement to suit your body.</p>
+    </div>
+  </section>
+
+  <div class="app-shell" id="app-shell" hidden>
+    <aside class="sidebar" aria-label="System navigation">
+      <a class="brand" href="#top" aria-label="FIT EXP system home">
+        <span class="brand-mark">F</span>
+        <span>FIT <b>EXP</b><small>PERSONAL SYSTEM</small></span>
+      </a>
+      <nav class="nav-list">
+        <a class="nav-item active" href="#top"><span>&#9670;</span> Dashboard</a>
+        <a class="nav-item" href="#missions"><span>&#10010;</span> Daily plan</a>
+        <a class="nav-item" href="#progress"><span>&#8781;</span> Progress</a>
+        <a class="nav-item" href="#records"><span>&#9776;</span> Records</a>
+        <a class="nav-item" href="#achievements"><span>&#10022;</span> Achievements</a>
+      </nav>
+      <div class="sidebar-foot">
+        <p>BUILD THE STREAK</p>
+        <button class="text-button" id="reset-progress" type="button">Reset profile &amp; records</button>
+      </div>
+    </aside>
+
+    <main class="main-content" id="top">
+      <header class="topbar">
+        <div class="welcome">
+          <p class="eyebrow"><span class="status-dot"></span> FIT EXP ONLINE</p>
+          <h1>Good <span id="day-period">morning</span>, <span class="accent" id="player-name-display">Athlete</span>.</h1>
+          <p id="today-date" class="subtle"></p>
+        </div>
+        <div class="top-actions">
+          <button class="icon-button" id="sound-toggle" type="button" aria-label="Toggle system sound" title="Toggle sound">&#9836;</button>
+          <button class="icon-button" id="theme-toggle" type="button" aria-label="Toggle interface theme" title="Toggle theme">&#9788;</button>
+          <div class="clock" aria-label="Current time"><span id="clock-time">00:00</span><small>LOCAL TIME</small></div>
+        </div>
+      </header>
+
+      <section class="hero-grid" aria-label="Player profile">
+        <article class="profile-card panel">
+          <div class="profile-top">
+            <div class="avatar" aria-hidden="true"><span id="profile-initial">F</span></div>
+            <div>
+              <p class="eyebrow">ATHLETE PROFILE</p>
+              <h2 id="profile-name">Athlete</h2>
+              <p class="rank"><span>&#10022;</span> <span id="profile-meta">Personal fitness plan</span></p>
+            </div>
+            <div class="level-orb"><span id="player-level">1</span><small>LVL</small></div>
+          </div>
+          <div class="xp-block">
+            <div class="meter-label"><span>EXPERIENCE</span><strong><span id="player-exp">0</span> / <span id="next-level-exp">100</span> XP</strong></div>
+            <div class="progress-track xp-track" aria-label="Experience progress"><div class="progress-fill" id="exp-progress"></div></div>
+          </div>
+        </article>
+
+        <article class="quote-card panel">
+          <p class="eyebrow">YOUR DAILY RULE</p>
+          <blockquote id="daily-directive">Small sessions done often create the strongest routine.</blockquote>
+          <div class="quote-footer"><span>DAILY COMPLETION</span><strong id="consistency-value">0%</strong></div>
+          <div class="progress-track"><div class="progress-fill violet-fill" id="consistency-progress"></div></div>
+        </article>
+      </section>
+
+      <section class="stat-grid" aria-label="Today at a glance">
+        <article class="stat-card panel"><span class="stat-icon cyan">&#9832;</span><div><p>Current streak</p><strong><span id="player-streak">0</span> <small>DAYS</small></strong></div></article>
+        <article class="stat-card panel"><span class="stat-icon violet">&#9673;</span><div><p>Mission progress</p><strong><span id="completed-count">0</span><small> / <span id="total-count">0</span> DONE</small></strong></div></article>
+        <article class="stat-card panel"><span class="stat-icon gold">&#10022;</span><div><p>FIT coins</p><strong><span id="fit-coins">0</span> <small>COINS</small></strong></div></article>
+        <article class="stat-card panel"><span class="stat-icon red">&times;</span><div><p>Reward multiplier</p><strong><span id="reward-multiplier">1.00</span><small>X</small></strong></div></article>
+      </section>
+
+      <section class="content-grid">
+        <section class="panel missions-panel" id="missions">
+          <div class="section-heading">
+            <div><p class="eyebrow"><span id="plan-label">DAILY PLAN</span> <span class="count-pill" id="quest-count">0 / 0</span></p><h2>Today's missions</h2></div>
+            <div class="mission-date"><span id="mission-date">TODAY</span><small>REFRESHES DAILY</small></div>
+          </div>
+          <p class="mission-intro" id="mission-intro">Your missions are tailored to your current training plan.</p>
+          <div class="task-list" id="task-list"></div>
+          <div class="mission-footer">
+            <p id="mission-hint">Complete every mission to unlock your daily reward.</p>
+            <button id="claim-reward" class="glow-button" type="button" disabled>Open reward cache <span>&rarr;</span></button>
+          </div>
+        </section>
+
+        <aside class="system-column">
+          <section class="panel timer-panel">
+            <div class="section-heading"><div><p class="eyebrow">TRAINING MODE</p><h2>Focus timer</h2></div><span class="pulse-ring"></span></div>
+            <div class="timer-readout" id="timer-display">00:00</div>
+            <p class="timer-note">Today's focused time: <strong id="focus-total">00:00</strong></p>
+            <div class="timer-controls"><button class="outline-button" type="button" id="timer-reset">Reset</button><button class="glow-button" type="button" id="timer-toggle">Start focus</button></div>
+          </section>
+          <section class="panel hydration-panel">
+            <div class="section-heading"><div><p class="eyebrow">RECOVERY</p><h2>Hydration</h2></div><span class="water-icon">&#9675;</span></div>
+            <div class="water-row"><div class="water-bar"><div id="water-fill"></div></div><strong><span id="water-count">0</span><small> / 8 GLASSES</small></strong></div>
+            <div class="hydration-actions"><button class="outline-button" id="water-minus" type="button" aria-label="Remove a glass">&minus;</button><button class="glow-button compact" id="water-plus" type="button">Log a glass</button></div>
+          </section>
+        </aside>
+      </section>
+
+      <section class="panel rewards-panel">
+        <div class="rewards-visual"><span class="cache-icon">&#10022;</span><div><p class="eyebrow">REWARD CACHE</p><h2>Earn more than XP.</h2><p>Complete the daily plan for coins, a random training item, and a stronger multiplier for tomorrow.</p></div></div>
+        <div class="reward-detail"><span>LAST UNLOCK</span><strong id="latest-reward">No rewards collected yet</strong></div>
+        <div class="reward-detail inventory-detail"><span>ITEMS COLLECTED</span><strong id="inventory-count">0</strong><div class="inventory-list" id="inventory-list"></div></div>
+      </section>
+
+      <section class="panel progress-section" id="progress">
+        <div class="section-heading"><div><p class="eyebrow">WEEKLY OVERVIEW</p><h2>Your momentum</h2></div><span class="subtle" id="weekly-label">Last 7 days</span></div>
+        <div class="weekly-chart" id="weekly-chart" aria-label="Weekly mission completion chart"></div>
+        <div class="lifetime-stats">
+          <div><span>DAYS COMPLETED</span><strong id="days-completed">0</strong></div>
+          <div><span>FOCUS TIME</span><strong id="lifetime-focus">00:00</strong></div>
+          <div><span>ACTIVITY RECORDS</span><strong id="record-count">0</strong></div>
+        </div>
+      </section>
+
+      <section class="panel records-section" id="records">
+        <div class="section-heading records-heading">
+          <div><p class="eyebrow">ACTIVITY ARCHIVE</p><h2>Your records</h2><p class="section-copy">Every mission, reward, hydration update and focus session is saved on this device.</p></div>
+          <div class="record-actions"><select id="log-filter" aria-label="Filter activity records"><option value="all">All activity</option><option value="mission">Missions</option><option value="reward">Rewards</option><option value="recovery">Recovery</option><option value="focus">Focus</option><option value="system">System</option></select><button class="outline-button" id="export-records" type="button">Export records</button></div>
+        </div>
+        <div class="activity-log" id="activity-log" aria-live="polite"></div>
+      </section>
+
+      <section class="achievements-section" id="achievements">
+        <div class="section-heading"><div><p class="eyebrow">MILESTONES</p><h2>Achievements</h2></div><span class="subtle"><span id="achievement-count">0</span> / 4 UNLOCKED</span></div>
+        <div class="achievement-grid">
+          <article class="achievement-card panel" data-achievement="firstMission"><span class="achievement-icon">&#10022;</span><div><h3>First step</h3><p>Complete your first mission.</p></div><span class="achievement-status">LOCKED</span></article>
+          <article class="achievement-card panel" data-achievement="dailyClear"><span class="achievement-icon">&#9673;</span><div><h3>Daily clear</h3><p>Open a completed daily reward cache.</p></div><span class="achievement-status">LOCKED</span></article>
+          <article class="achievement-card panel" data-achievement="threeDayStreak"><span class="achievement-icon">&#9832;</span><div><h3>Momentum</h3><p>Reach a three-day completion streak.</p></div><span class="achievement-status">LOCKED</span></article>
+          <article class="achievement-card panel" data-achievement="collector"><span class="achievement-icon">&#10070;</span><div><h3>Collector</h3><p>Collect three reward items.</p></div><span class="achievement-status">LOCKED</span></article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="notification" role="status" aria-live="polite"><span class="toast-icon">&#10022;</span><p class="notification-text"></p></div>
+
+  <div class="guide-modal" id="guide-modal" role="dialog" aria-modal="true" aria-labelledby="guide-title" hidden>
+    <section class="guide-card">
+      <button class="guide-close" id="close-guide" type="button" aria-label="Close exercise guide">&times;</button>
+      <p class="eyebrow" id="guide-category">EXERCISE GUIDE</p>
+      <h2 id="guide-title">How to do this exercise</h2>
+      <p class="guide-intro" id="guide-intro"></p>
+      <ol class="guide-steps" id="guide-steps"></ol>
+      <div class="guide-tip"><span>FORM CUE</span><p id="guide-tip"></p></div>
+      <p class="guide-safety" id="guide-safety"></p>
+    </section>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
